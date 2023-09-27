@@ -9,6 +9,7 @@
 
     <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="css/animate.css">
+    <link rel="icon" href="images/car_logo.jpg" type="image/x-icon" />
     
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/owl.theme.default.min.css">

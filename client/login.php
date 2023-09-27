@@ -35,7 +35,7 @@
         </div>
         <div class="div-input">
         <button  class="button-43">Login</button>
-        <a href="#" class="link">No Account? Register Now</a>
+        <a href="register.php" class="link">No Account? Register Now</a>
         </div>
       </div>
     </div>
