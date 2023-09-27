@@ -11,6 +11,7 @@
         <meta charset="utf-8" />
         <title>Login to Rent a Car</title>
         <link rel="stylesheet" href="css/login.css" />
+        <link rel="icon" href="images/car_logo.jpg" type="image/x-icon" />
         <script src="js/login.js"></script>
         
     </head>
