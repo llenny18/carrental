@@ -11,6 +11,7 @@ body{
   align-items: center;
   justify-content: center;
   background-image: url("../images/bg_2.jpg");
+  padding: 10px;
 }
 
 .wrapper{
@@ -185,3 +186,69 @@ form .text h3 a:hover{
   100% {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px; } }
+
+    
+.select-box {
+  cursor: pointer;
+  position : relative;
+  color: #333;
+  width: 100%;
+}
+
+.select,
+.label {
+  color: #333;
+  display: block;
+  font: 400 17px/2em 'Source Sans Pro', sans-serif;
+}
+
+.select {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  padding: 5px 0;
+  height: 40px;
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  background: none transparent;
+  border: 0 none;
+  color: #333;
+  cursor: pointer;
+
+}
+.select-box1 {
+  background-color: white;
+  border: 1.5px solid #C7BEBE;
+  color: #333;
+  border-radius: 6px;
+  border-bottom-width: 2.5px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.label {
+  position: relative;
+  padding: 5px 10px;
+  cursor: pointer;
+  color: #333;
+}
+.open .label::after {
+   content: "▲";
+}
+.label::after {
+  content: "▼";
+  font-size: 12px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 5px 15px;
+  border-left: 5px solid #fff;
+  color: #333;
+  
+}
+
+select.decorated option:hover {
+  box-shadow: 0 0 10px 100px #1882A8 inset;
+  border-color: #4070f4;
+  border-radius: 6px;
+}

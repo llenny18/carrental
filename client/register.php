@@ -1,13 +1,13 @@
 <?php
 
 include '../db/include.php';
+include 'functions/func.php';
 
 
 if (isset($_SESSION['userID'])){
   redirect_to("index.php");
 
 }
-
 
 ?>
 
@@ -24,18 +24,40 @@ if (isset($_SESSION['userID'])){
 <body>
   <div class="wrapper">
     <h2>Registration</h2>
-    <form action="login.php" method="post">
+    <form action="functions/func.php?action=reg" method="post">
       <div class="input-box">
-        <input type="text" placeholder="Enter your name" required>
+        <input type="text" name="fname" placeholder="Enter your first name" required>
       </div>
       <div class="input-box">
-        <input type="text" placeholder="Enter your email" required>
+        <input type="text" name="lname" placeholder="Enter your last name" required>
       </div>
       <div class="input-box">
-        <input type="password" placeholder="Create password" required>
+        <input type="text" name="email" placeholder="Enter your email" required>
       </div>
       <div class="input-box">
-        <input type="password" placeholder="Confirm password" required>
+        <input type="text" name="cnum" placeholder="Enter your contact number" required>
+      </div>
+      <div class="input-box">
+        <input type="text" name="address" placeholder="Enter your address" required>
+      </div>
+      <div class="input-box">
+        <input type="text" name="occupation" placeholder="Enter your occupation" required>
+      </div>
+      <div class="select-box">
+    
+    <label for="select-box1" class="label select-box1"><span class="label-desc">Choose your gender</span> </label>
+    <select id="select-box1" class="select" name="gender" required>
+      <option value=""></option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+    </select>
+    
+  </div>
+      <div class="input-box">
+        <input type="password" name="pass1" placeholder="Create password" required>
+      </div>
+      <div class="input-box">
+        <input type="password" name="pass2" placeholder="Confirm password" required>
       </div>
       <div class="policy">
         <input type="checkbox">
@@ -68,5 +90,6 @@ if (isset($_SESSION['userID'])){
   <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
   <script src="js/alerts.js"></script>
+  <script src="js/reg.js"></script>
 </body>
 </html>

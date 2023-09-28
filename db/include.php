@@ -1,5 +1,15 @@
 <?php
 session_start();
+class db {
+    public $conn;
+    function set_db() {
+$conn = new mysqli('localhost','root','','carrental');
+    if($conn->connect_error){
+        die ("Connection failed: " .$conn->connect_error);
+    }
+    return $conn;
+}
+}
 function redirect_to($location = NULL) {
     if($location != NULL){
         header("Location: {$location}");
