@@ -1,4 +1,11 @@
-<!DOCTYPE html>
+<?php
+
+include '../db/include.php';
+
+
+
+
+?>
 <html lang="en">
   <head>
     <title>Carbook - Free Bootstrap 4 Template by Colorlib</title>
@@ -343,6 +350,16 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
-    
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="sweetalert2.all.min.js"></script>
+  <script src="js/alerts.js"></script>
+  <?php
+  if (!isset($_SESSION['userID'])){
+	echo "<script>notLogin();</script>";
+ 
+
+}
+ 
+ ?>
   </body>
 </html>

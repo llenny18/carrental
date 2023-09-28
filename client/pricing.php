@@ -1,11 +1,21 @@
-<!DOCTYPE html>
+<?php
+
+include '../db/include.php';
+
+
+
+
+
+?>
 <html lang="en">
   <head>
+	
     <title>Carbook - Free Bootstrap 4 Template by Colorlib</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" href="images/car_logo.jpg" type="image/x-icon" />
-    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script src="sweetalert2.all.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
@@ -462,6 +472,15 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/alerts.js"></script>
     
   </body>
+  <?php
+  if (!isset($_SESSION['userID'])){
+	echo "<script>notLogin();</script>";
+ 
+
+}
+ 
+ ?>
 </html>

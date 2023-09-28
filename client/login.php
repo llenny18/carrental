@@ -1,6 +1,12 @@
 <?php
 
+include '../db/include.php';
 
+
+if (isset($_SESSION['userID'])){
+  redirect_to("index.php");
+
+}
 
 
 ?>
@@ -23,7 +29,7 @@
       <div class="eula">Please enter your email and password, if not registered kindly register and verify your email</div>
     </div>
     <div class="right">
-    
+    <form action="index.php" method="post">
       <div class="form">
         <div class="div-input">
         <label for="email">Email</label>
@@ -34,10 +40,11 @@
         <input type="password" id="password">
         </div>
         <div class="div-input">
-        <button  class="button-43">Login</button>
+        <button type="submit" class="button-43">Login</button>
         <a href="register.php" class="link">No Account? Register Now</a>
         </div>
       </div>
+      </form>
     </div>
   </div>
 </div>

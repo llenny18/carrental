@@ -1,3 +1,17 @@
+<?php
+
+include '../db/include.php';
+
+
+if (isset($_SESSION['userID'])){
+  redirect_to("index.php");
+
+}
+
+
+?>
+
+
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8">
@@ -10,7 +24,7 @@
 <body>
   <div class="wrapper">
     <h2>Registration</h2>
-    <form action="#">
+    <form action="login.php" method="post">
       <div class="input-box">
         <input type="text" placeholder="Enter your name" required>
       </div>
