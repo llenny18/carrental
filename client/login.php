@@ -7,6 +7,28 @@ if (isset($_SESSION['userID'])){
   redirect_to("index.php");
 
 }
+function logUser(){
+  $uemail = $_POST['email'];
+  $pass = $_POST['pass'];
+
+  $conn = new db();
+    $select_query = "Select * from useraccounts where userEmail  = '$uemail' and userPassword='$pass'" ;
+   
+    $result_select = mysqli_query($conn->set_db(), $select_query);
+    $number = mysqli_num_rows($result_select);
+    if($number>0){
+      
+      while( $row = $result_select->fetch_array(MYSQLI_ASSOC) ){
+        $_SESSION['userID']  = $row['uniqueID'];
+    }
+    echo "<script>correctLogin();</script>";
+    }
+    else{
+      echo "<script>wrongLogin();</script>";
+      }
+    }
+
+
 
 
 ?>
@@ -19,7 +41,9 @@ if (isset($_SESSION['userID'])){
         <link rel="stylesheet" href="css/login.css" />
         <link rel="icon" href="images/car_logo.jpg" type="image/x-icon" />
         <script src="js/login.js"></script>
- 
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="sweetalert2.min.js"></script>
+<link rel="stylesheet" href="sweetalert2.min.css">
     </head>
     <body>
     <div class="page">
@@ -29,18 +53,18 @@ if (isset($_SESSION['userID'])){
       <div class="eula">Please enter your email and password, if not registered kindly register and verify your email</div>
     </div>
     <div class="right">
-    <form action="index.php" method="post">
+    <form action=" " method="post">
       <div class="form">
         <div class="div-input">
         <label for="email">Email</label>
-        <input type="email" id="email">
+        <input type="email" id="email" name="email" required>
         </div>
         <div class="div-input">
         <label for="password">Password</label>
-        <input type="password" id="password">
+        <input type="password" id="password"name="pass" required>
         </div>
         <div class="div-input">
-        <button type="submit" class="button-43">Login</button>
+        <button type="submit" class="button-43" name="login">Login</button>
         <a href="register.php" class="link">No Account? Register Now</a>
         </div>
       </div>
@@ -68,5 +92,38 @@ if (isset($_SESSION['userID'])){
   <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
   <script src="js/alerts.js"></script>
+  <script>
+    
+const wrongLogin = () =>{
+  Swal.fire({
+      title: 'Email or password is incorrect',
+      text: 'Please Check your email or password input',
+      icon: 'error',
+      confirmButtonText: 'Ok'
+    }).then(function() {
+      window.location = "login.php";
+  });
+    
+};
+
+const correctLogin = () =>{
+  Swal.fire({
+      title: 'Login successful!',
+      text: 'You can now check different car reantals!',
+      icon: 'success',
+      confirmButtonText: 'Ok'
+    }).then(function() {
+      window.location = "index.php";
+  });
+    
+};
+  </script>
+<?php
+if(isset($_POST['login'])){
+  logUser();
+}
+
+
+?>
     </body>
 </html>

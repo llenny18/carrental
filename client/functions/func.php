@@ -7,6 +7,9 @@ switch ($action) {
 	regUser();
 	break;
 	
+  case 'login' :
+    logUser();
+    break;
 
 	
 }
@@ -45,6 +48,23 @@ function regUser(){
 
 }
 
+
+function logUser(){
+  $uemail = $_POST['email'];
+  $pass = $_POST['pass'];
+
+  $conn = new db();
+    $select_query = "Select * from useraccounts where userEmail  = '$uemail' and userPassword='$pass'" ;
+   
+    $result_select = mysqli_query($conn->set_db(), $select_query);
+    $number = mysqli_num_rows($result_select);
+    if($number>0){
+      echo "<script>correctLogin();</script>";
+    }
+    else{
+      echo "<script>wrongLogin();</script>";
+      }
+    }
 
 
 
