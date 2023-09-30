@@ -1,6 +1,12 @@
 <?php
 include '../db/include.php';
 
+$conn = new db();
+
+$sql = "SELECT * FROM useraccounts where uniqueID = '{$_SESSION['admin_userID']}' ";
+$acc = $conn->set_db()->query($sql);
+$acc_now = $acc->fetch_assoc();
+
  ?>
 <html lang="en">
   <head>
@@ -54,7 +60,7 @@ include '../db/include.php';
                   <span class="count bg-success"></span>
                 </div>
                 <div class="profile-name">
-                  <h5 class="mb-0 font-weight-normal">Henry Klein</h5>
+                  <h5 class="mb-0 font-weight-normal"><?php echo "{$acc_now['firstName']} {$acc_now['lastName']}" ?></h5>
                   <span>Gold Member</span>
                 </div>
               </div>
@@ -339,7 +345,7 @@ include '../db/include.php';
                 <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
                   <div class="navbar-profile">
                     <img class="img-xs rounded-circle" src="assets/images/faces/face15.jpg" alt="">
-                    <p class="mb-0 d-none d-sm-block navbar-profile-name">Henry Klein</p>
+                    <p class="mb-0 d-none d-sm-block navbar-profile-name"><?php echo "{$acc_now['firstName']} {$acc_now['lastName']}" ?></p>
                     <i class="mdi mdi-menu-down d-none d-sm-block"></i>
                   </div>
                 </a>
@@ -708,7 +714,7 @@ include '../db/include.php';
                             </td>
                             <td>
                               <img src="assets/images/faces/face1.jpg" alt="image" />
-                              <span class="pl-2">Henry Klein</span>
+                              <span class="pl-2"><?php echo "{$acc_now['firstName']} {$acc_now['lastName']}" ?></span>
                             </td>
                             <td> 02312 </td>
                             <td> $14,500 </td>

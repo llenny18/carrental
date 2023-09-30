@@ -21,6 +21,7 @@ function logUser(){
       }
     }
 
+
 ?>
 <html lang="en">
   <head>
