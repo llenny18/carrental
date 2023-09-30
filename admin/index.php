@@ -26,10 +26,15 @@ include '../db/include.php';
     <link rel="shortcut icon" href="assets/images/favicon.png" />
     <link rel="stylesheet" href="sweetalert2.min.css">
     <style>
-    .title-class{
+     
+    body.swal2-shown > [aria-hidden="true"] {
+      transition: 0.5s -webkit-filter linear;
+  filter: blur(20px);
+  
+}
 
-  color: black;
-}</style>
+
+</style>
   </head>
   <body>
     <div class="container-scroller">
@@ -1075,15 +1080,11 @@ include '../db/include.php';
     <script>
 const notLogin = () =>{
     Swal.fire({
-        title: 'You are not logged in',
+        title: '<h2 style="color:darkred; text-transform: uppercase;">You are not logged in</h2>',
         text: 'Please login first!',
         icon: 'error',
-        confirmButtonText: 'Ok',
-        customClass: {
-        confirmButton: 'confirm-button-class',
-        title: 'title-class',
-        icon: 'icon-class'
-      }
+        confirmButtonText: 'Login',
+        padding: '30px'
       }).then(function() {
         window.location = "pages/account/login.php";
     });
