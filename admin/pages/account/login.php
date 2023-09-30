@@ -1,4 +1,27 @@
-<!DOCTYPE html>
+<?php
+include "../../../db/include.php";
+function logUser(){
+  $uemail = $_POST['email'];
+  $pass = $_POST['pass'];
+
+  $conn = new db();
+    $select_query = "Select * from useraccounts where userEmail  = '$uemail' and userPassword='$pass' and userType='Admin'" ;
+   
+    $result_select = mysqli_query($conn->set_db(), $select_query);
+    $number = mysqli_num_rows($result_select);
+    if($number>0){
+      
+      while( $row = $result_select->fetch_array(MYSQLI_ASSOC) ){
+        $_SESSION['admin_userID']  = $row['uniqueID'];
+    }
+    echo "<script>correctLogin();</script>";
+    }
+    else{
+      echo "<script>wrongLogin();</script>";
+      }
+    }
+
+?>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -8,12 +31,9 @@
     <!-- plugins:css -->
     <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
-    <!-- endinject -->
-    <!-- Plugin css for this page -->
-    <!-- End plugin css for this page -->
-    <!-- inject:css -->
-    <!-- endinject -->
-    <!-- Layout styles -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
     <link rel="stylesheet" href="../../assets/css/style.css">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="../../assets/images/favicon.png" />
@@ -25,15 +45,14 @@
           <div class="content-wrapper full-page-wrapper d-flex align-items-center auth login-bg">
             <div class="card col-lg-4 mx-auto">
               <div class="card-body px-5 py-5">
-                <h3 class="card-title text-left mb-3">Login</h3>
-                <form>
+            <form action="" method="post">
                   <div class="form-group">
                     <label>Username or email *</label>
-                    <input type="text" class="form-control p_input">
+                    <input type="text" class="form-control p_input" name="email">
                   </div>
                   <div class="form-group">
                     <label>Password *</label>
-                    <input type="text" class="form-control p_input">
+                    <input type="password" class="form-control p_input" name="pass">
                   </div>
                   <div class="form-group d-flex align-items-center justify-content-between">
                     <div class="form-check">
@@ -43,7 +62,7 @@
                     <a href="#" class="forgot-pass">Forgot password</a>
                   </div>
                   <div class="text-center">
-                    <button type="submit" class="btn btn-primary btn-block enter-btn">Login</button>
+                    <button type="submit" class="btn btn-primary btn-block enter-btn" name="login">Login</button>
                   </div>
                   <div class="d-flex">
                     <button class="btn btn-facebook mr-2 col">
@@ -74,6 +93,26 @@
     <script src="../../assets/js/misc.js"></script>
     <script src="../../assets/js/settings.js"></script>
     <script src="../../assets/js/todolist.js"></script>
+    <script>
+    const correctLogin = () =>{
+  Swal.fire({
+      title: 'Email or password is incorrect',
+      text: 'Please Check your email or password input',
+      icon: 'success',
+      confirmButtonText: 'Ok'
+    }).then(function() {
+      window.location = "../../index.php";
+  });
+    
+};
+</script>
     <!-- endinject -->
   </body>
+  <?php
+if(isset($_POST['login'])){
+  logUser();
+}
+
+
+?>
 </html>

@@ -25,6 +25,7 @@ include '../db/include.php';
     <!-- End layout styles -->
     <link rel="shortcut icon" href="assets/images/favicon.png" />
     <link rel="stylesheet" href="sweetalert2.min.css">
+        
     <style>
      
     body.swal2-shown > [aria-hidden="true"] {

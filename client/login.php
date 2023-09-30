@@ -12,7 +12,7 @@ function logUser(){
   $pass = $_POST['pass'];
 
   $conn = new db();
-    $select_query = "Select * from useraccounts where userEmail  = '$uemail' and userPassword='$pass'" ;
+    $select_query = "Select * from useraccounts where userEmail  = '$uemail' and userPassword='$pass' and userType='Client'" ;
    
     $result_select = mysqli_query($conn->set_db(), $select_query);
     $number = mysqli_num_rows($result_select);
