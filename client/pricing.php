@@ -3,9 +3,6 @@
 include '../db/include.php';
 
 
-
-
-
 ?>
 <html lang="en">
   <head>

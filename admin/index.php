@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+<?php
+include '../db/include.php';
+
+ ?>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -21,6 +24,12 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="assets/images/favicon.png" />
+    <link rel="stylesheet" href="sweetalert2.min.css">
+    <style>
+    .title-class{
+
+  color: black;
+}</style>
   </head>
   <body>
     <div class="container-scroller">
@@ -1060,6 +1069,36 @@
     <!-- endinject -->
     <!-- Custom js for this page -->
     <script src="assets/js/dashboard.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script src="sweetalert2.all.min.js"></script>
+  
+    <script>
+const notLogin = () =>{
+    Swal.fire({
+        title: 'You are not logged in',
+        text: 'Please login first!',
+        icon: 'error',
+        confirmButtonText: 'Ok',
+        customClass: {
+        confirmButton: 'confirm-button-class',
+        title: 'title-class',
+        icon: 'icon-class'
+      }
+      }).then(function() {
+        window.location = "pages/account/login.php";
+    });
+      
+};
+
+    </script>
+    <?php
+
+  if (!isset($_SESSION['admin_userID'])){
+	echo "<script>notLogin();</script>";
+
+}
+
+ ?>
     <!-- End custom js for this page -->
   </body>
 </html>
